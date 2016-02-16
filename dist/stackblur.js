@@ -80,6 +80,7 @@ var shg_table = [
 
 function processImage(img, canvas, radius, blurAlphaChannel)
 {
+    try {
     if (typeof(img) == 'string') {
         var img = document.getElementById(img);
     }
@@ -111,6 +112,10 @@ function processImage(img, canvas, radius, blurAlphaChannel)
         processCanvasRGBA(canvas, 0, 0, w, h, radius);
     else
         processCanvasRGB(canvas, 0, 0, w, h, radius);
+    
+    } catch (e) {
+        // do nothing on error
+    }
 }
 
 function getImageDataFromCanvas(canvas, top_x, top_y, width, height)
